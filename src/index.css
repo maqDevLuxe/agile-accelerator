@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 97%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 222 60% 18%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 220 15% 92%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 220 15% 95%;
+    --muted-foreground: 220 10% 45%;
+
+    --accent: 24 95% 53%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 15% 90%;
+    --input: 220 15% 90%;
+    --ring: 24 95% 53%;
+
+    --radius: 0.5rem;
+
+    --navy: 222 60% 18%;
+    --navy-light: 222 40% 28%;
+    --navy-dark: 222 65% 10%;
+    --platinum: 220 15% 92%;
+    --platinum-light: 220 15% 96%;
+    --orange: 24 95% 53%;
+    --orange-light: 24 90% 62%;
+    --orange-dark: 24 95% 45%;
+
+    --gradient-navy: linear-gradient(135deg, hsl(222 65% 10%), hsl(222 60% 18%));
+    --gradient-orange: linear-gradient(135deg, hsl(24 95% 53%), hsl(24 90% 62%));
+    --gradient-hero: linear-gradient(160deg, hsl(222 65% 10%) 0%, hsl(222 60% 18%) 50%, hsl(222 40% 28%) 100%);
+
+    --shadow-card: 0 4px 24px -4px hsl(222 60% 18% / 0.08);
+    --shadow-card-hover: 0 8px 32px -4px hsl(222 60% 18% / 0.15);
+    --shadow-orange-glow: 0 0 20px hsl(24 95% 53% / 0.4);
+
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8 py-16 md:py-24;
+  }
+
+  .container-max {
+    @apply max-w-7xl mx-auto;
+  }
+
+  .text-gradient-orange {
+    background: linear-gradient(135deg, hsl(24 95% 53%), hsl(24 90% 62%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-navy {
+    background: linear-gradient(135deg, hsl(222 60% 18%), hsl(222 40% 28%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .card-kanban {
+    @apply bg-card rounded-lg border border-border p-6;
+    box-shadow: var(--shadow-card);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card-kanban:hover {
+    box-shadow: var(--shadow-card-hover);
+    border-color: hsl(24 95% 53% / 0.5);
+    transform: translateY(-2px);
+  }
+
+  .glow-border {
+    @apply border-2 border-transparent;
+    transition: all 0.3s ease;
+  }
+
+  .glow-border:hover {
+    border-color: hsl(var(--orange));
+    box-shadow: var(--shadow-orange-glow);
+  }
+
+  .bg-navy {
+    background: hsl(var(--navy));
+  }
+
+  .bg-navy-dark {
+    background: hsl(var(--navy-dark));
+  }
+
+  .bg-navy-gradient {
+    background: var(--gradient-hero);
+  }
+
+  .bg-platinum {
+    background: hsl(var(--platinum));
+  }
+
+  .bg-platinum-light {
+    background: hsl(var(--platinum-light));
+  }
+
+  .text-navy {
+    color: hsl(var(--navy));
+  }
+
+  .text-orange {
+    color: hsl(var(--orange));
+  }
+
+  .btn-orange {
+    @apply inline-flex items-center justify-center rounded-lg font-semibold transition-all duration-300;
+    background: var(--gradient-orange);
+    color: hsl(0 0% 100%);
+    padding: 0.75rem 2rem;
+    font-family: var(--font-display);
+  }
+
+  .btn-orange:hover {
+    box-shadow: var(--shadow-orange-glow);
+    transform: translateY(-1px);
+  }
+
+  .btn-outline-navy {
+    @apply inline-flex items-center justify-center rounded-lg font-semibold transition-all duration-300 border-2;
+    border-color: hsl(var(--navy));
+    color: hsl(var(--navy));
+    padding: 0.75rem 2rem;
+    font-family: var(--font-display);
+  }
+
+  .btn-outline-navy:hover {
+    background: hsl(var(--navy));
+    color: hsl(var(--primary-foreground));
+  }
+}
